@@ -13,8 +13,8 @@ class Baraja {
             listaCartas.clear()
             for(i in Palos.values()){
                 for(x in Naipes.values()){
-                    // val micarta = Carta(naipe,palo,pts,pts,idDrwb)
-                    // listaCartas.add(micarta)
+                    val cartaAdd = Carta(x,i)
+                    listaCartas.add(cartaAdd)
                 }
             }
         }
