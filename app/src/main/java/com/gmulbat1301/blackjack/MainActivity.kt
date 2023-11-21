@@ -6,11 +6,14 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.gmulbat1301.blackjack.ui.theme.BlackJackTheme
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.gmulbat1301.blackjack.routes.Routes
+import com.gmulbat1301.blackjack.screens.*
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,12 +25,19 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting()
+                    val navController = rememberNavController()
+                    NavHost(
+                        navController = navController,
+                        startDestination = Routes.mainScreen.route
+                    ) {
+                        composable(Routes.mainScreen.route) { mainScreen(navController) }
+                        composable(Routes.screenPVE.route) { screenPVE(navController) }
+                        composable(Routes.screenPVP.route) { screenPVP(navController) }
+                        composable(Routes.screenRules.route) { screenRules(navController) }
+
+                    }
                 }
             }
         }
     }
 }
-
-@Composable
-fun Greeting() {}
