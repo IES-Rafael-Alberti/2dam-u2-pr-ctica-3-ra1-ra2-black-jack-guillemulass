@@ -1,10 +1,13 @@
 package com.gmulbat1301.blackjack.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -17,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -34,13 +38,23 @@ fun mainScreen(navController: NavHostController){
             ),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Spacer(modifier = Modifier.padding(20.dp))
         Text(
             text = "BlackJack",
             fontSize = 60.sp,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            color = Color.Black
+        )
+        Spacer(modifier = Modifier.padding(25.dp))
+
+        Image(
+            painter = painterResource(id = R.drawable.icon),
+            contentDescription = null,
+            Modifier.size(250.dp)
         )
 
-        Spacer(modifier = Modifier.padding(200.dp))
+        Spacer(modifier = Modifier.padding(45.dp))
+
 
         Button(
             shape = RectangleShape,
@@ -63,7 +77,7 @@ fun mainScreen(navController: NavHostController){
             colors = ButtonDefaults.buttonColors(Color.White)
         ) {
             Text(
-                text = "Multujugador",
+                text = "Multijugador",
                 fontSize = 40.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.DarkGray
@@ -100,25 +114,25 @@ fun screenPVE(navController: NavHostController){
     ){
 
         Text(
-            text = "Multijugador",
-            fontSize = 50.sp,
+            text = "Individual",
+            fontSize = 75.sp,
             fontWeight = FontWeight.Bold,
-            color = Color.DarkGray
+            color = Color.Black
         )
 
-        Spacer(modifier = Modifier.padding(20.dp))
-
         Button(
-            shape = RectangleShape,
             onClick = { navController.navigate(Routes.mainScreen.route) },
             colors = ButtonDefaults.buttonColors(Color.Red)
         ) {
             Text(
                 text = "Pantalla Inicial",
-                fontSize = 30.sp,
+                fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
+                color = Color.Black
             )
         }
+
+
 
     }
 }
@@ -135,23 +149,21 @@ fun screenPVP(navController: NavHostController){
     ){
 
         Text(
-            text = "Individual",
-            fontSize = 50.sp,
-            fontWeight = FontWeight.Bold
+            text = "Multijugador",
+            fontSize = 60.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.Black
         )
 
-        Spacer(modifier = Modifier.padding(10.dp))
-
         Button(
-            shape = RectangleShape,
             onClick = { navController.navigate(Routes.mainScreen.route) },
             colors = ButtonDefaults.buttonColors(Color.Red)
         ) {
             Text(
                 text = "Pantalla Inicial",
-                fontSize = 30.sp,
+                fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.DarkGray
+                color = Color.Black
             )
         }
 
