@@ -10,4 +10,7 @@ class Jugador(var nombre: String, var fichas: Int, var mano: MutableList<Carta>)
     fun gana(apuesta: Int){
         this.fichas += apuesta
     }
+
+    constructor() : this("",0, mutableListOf<Carta>())
+
 }

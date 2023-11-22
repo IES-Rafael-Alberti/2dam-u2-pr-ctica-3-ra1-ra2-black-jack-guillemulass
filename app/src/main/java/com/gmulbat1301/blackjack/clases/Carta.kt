@@ -1,9 +1,13 @@
 package com.gmulbat1301.blackjack.clases
 
-class Carta(nombre: Naipes, palo: Palos) {
-    protected var puntosMin: Int
-    protected var puntosMax: Int
-    protected var idDrawable: Int
+import android.graphics.drawable.AdaptiveIconDrawable
+
+class Carta(nombre: Naipes, palo: Palos,idDrawable: Int) {
+
+    var puntosMin: Int
+    var puntosMax: Int
+    var IdDrawable = idDrawable
+
 
     init {
         if (nombre.valor == 1) {
@@ -13,7 +17,22 @@ class Carta(nombre: Naipes, palo: Palos) {
             puntosMax = nombre.valor
             puntosMin = nombre.valor
         }
-        idDrawable = nombre.valor + (palo.valor * 13)
-        // las cartas tienen como nombre c1 hasta c52, añadir c mas tarde
+        /*
+        idDrawable = if (nombre.valor !=10){
+            nombre.valor + (palo.valor * 13)
+        } else{
+            when (nombre.name) {
+                "VALET" -> {
+                    nombre.valor + 1 + (palo.valor * 13)
+                }
+                "DAME" -> {
+                    nombre.valor + 2 + (palo.valor * 13)
+                }
+                else -> {
+                    nombre.valor + 3 + (palo.valor * 13)
+                }
+            }
+        }
+         */
     }
 }

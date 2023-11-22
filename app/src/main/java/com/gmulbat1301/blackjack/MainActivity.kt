@@ -30,9 +30,9 @@ class MainActivity : ComponentActivity() {
                         navController = navController,
                         startDestination = Routes.mainScreen.route
                     ) {
-                        composable(Routes.mainScreen.route) { mainScreen(navController) }
+                        composable(Routes.mainScreen.route) { MainScreen(navController) }
                         composable(Routes.screenPVE.route) { screenPVE(navController) }
-                        composable(Routes.screenPVP.route) { screenPVP(navController) }
+                        composable(Routes.screenPVP.route) { ScreenPVP(navController) }
                         composable(Routes.screenRules.route) { screenRules(navController) }
 
                     }
