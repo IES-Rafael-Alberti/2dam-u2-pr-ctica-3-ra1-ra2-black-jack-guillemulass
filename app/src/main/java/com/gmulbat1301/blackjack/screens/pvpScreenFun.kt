@@ -44,12 +44,12 @@ import com.gmulbat1301.blackjack.routes.Routes
 @Composable
 fun ScreenPVP(navController: NavHostController) {
 
-    var baraja = Baraja
+    val baraja = Baraja
     baraja.crearBaraja()
     baraja.barajar()
 
     val jugador1 = Jugador()
-    var manoJ1 by remember { mutableStateOf(jugador1.mano)}
+    val manoJ1 by remember { mutableStateOf(jugador1.mano)}
 
 
     val jugador2 = Jugador()
