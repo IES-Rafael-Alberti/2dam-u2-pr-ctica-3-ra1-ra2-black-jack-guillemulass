@@ -27,6 +27,11 @@ import androidx.navigation.NavHostController
 import com.gmulbat1301.blackjack.R
 import com.gmulbat1301.blackjack.routes.Routes
 
+/**
+ * Funcion Inicial, controla la navegacion
+ *
+ * @param navController Controlador de navegacion
+ */
 @Composable
 fun MainScreen(navController: NavHostController){
     Column(
@@ -70,17 +75,35 @@ fun MainScreen(navController: NavHostController){
     }
 }
 
+/**
+ * Funcion que crea un spacer, solo por simplificar el uso del spacer
+ *
+ * @param dp tamaño del spacer
+ */
 @Composable
 fun Spacer(dp: Int){
     Spacer(modifier = Modifier.padding(dp.dp))
 }
 
+/**
+ * Funcion que crea los botones de navegacion
+ *
+ * @param text Texto que se muestra en el boton,
+ * tambien se usa para diferenciar unos botones de otros a la hora de crearlos
+ * @param navController Controlador de navegacion del boton que se quiere crear
+ */
 @Composable
-fun NavButtons(text: String, navController: NavHostController){
+fun NavButtons(
+    text: String,
+    navController: NavHostController
+){
     var fontSize = 40
     Button(
         shape = RectangleShape,
         onClick = {
+            /**
+             * Dependiendo del texto del boton se crea un boton u otro
+             */
             when (text) {
                 "Individual" -> navController.navigate(Routes.screenPVE.route)
                 "Multijugador" -> navController.navigate(Routes.screenPVP.route)

@@ -32,6 +32,14 @@ import com.gmulbat1301.blackjack.R
 import com.gmulbat1301.blackjack.clases.Carta
 import com.gmulbat1301.blackjack.routes.Routes
 
+
+/**
+ * Funcion Padre de la pantalla, controla que se muestra,
+ * si la pantalla de juego o la de final de la partida
+ *
+ * @param navController Controlador de navegacion
+ * @param pvpViewModel Clase controladora
+ */
 @SuppressLint("MutableCollectionMutableState", "SuspiciousIndentation")
 @Composable
 fun ScreenPVP(
@@ -40,16 +48,16 @@ fun ScreenPVP(
 ) {
 
     val finishGame: Boolean by pvpViewModel.finishGame.observeAsState(initial = false)
-    val standPlayer1: Boolean by pvpViewModel.player1Turn.observeAsState(initial = true)
-    val standPlayer2: Boolean by pvpViewModel.player2Turn.observeAsState(initial = false)
     val playerTurn: Int by pvpViewModel.playerTurn.observeAsState(initial = 1)
 
+    /**
+     * Cuando la la partida no ha terminado (finishGame) se muestran los botones para jugar,
+     * cuando acaba se muestra el resultado y da la opcion de reiniciar la partida
+     */
     if (!finishGame){
         PVPVisual(
             pvpViewModel,
             navController,
-            standPlayer1,
-            standPlayer2,
             playerTurn
         )
     } else{
@@ -61,14 +69,21 @@ fun ScreenPVP(
 }
 
 
+/**
+ * Funcion principal de la partida, llama al resto de funciones y controla las variables
+ *
+ * @param pvpViewModel Clase controladora
+ * @param playerTurn Int que muestra de que jugador es turno actual (1 o 2)
+ */
 @Composable
 fun PVPVisual(
     pvpViewModel: PVPViewModel,
     navController: NavHostController,
-    standPlayer1: Boolean,
-    standPlayer2: Boolean,
     playerTurn: Int
 ){
+
+    val player1Turn: Boolean by pvpViewModel.player1Turn.observeAsState(initial = true)
+    val player2Turn: Boolean by pvpViewModel.player2Turn.observeAsState(initial = false)
     val player1Finished: Boolean by pvpViewModel.player1Finished.observeAsState(initial = false)
     val player2Finished: Boolean by pvpViewModel.player2Finished.observeAsState(initial = false)
 
@@ -81,11 +96,13 @@ fun PVPVisual(
             ),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
         TopRow(navController)
+
         PlayerButtons(
             pvpViewModel,
             1,
-            standPlayer1,
+            player1Turn,
             playerTurn,
             player1Finished
         )
@@ -93,7 +110,7 @@ fun PVPVisual(
         PlayerButtons(
             pvpViewModel,
             2,
-            standPlayer2,
+            player2Turn,
             playerTurn,
             player2Finished
         )
@@ -101,6 +118,9 @@ fun PVPVisual(
 }
 
 
+/**
+ * Parte superior de la pantalla, se muestra el modo de juego y un boton para volver a la pantalla inicial
+ */
 @Composable
 fun TopRow(navController: NavHostController) {
     Text(
@@ -125,6 +145,17 @@ fun TopRow(navController: NavHostController) {
     Spacer(dp = 10)
 }
 
+
+/**
+ * Funcion unica que controla y crea los botones para ambos jugadores dependiendo del Id introducido y
+ * llama a la funcion para mostrar sus cartas
+ *
+ * @param pvpViewModel Clase controladora
+ * @param playerID Id del jugador del que se va mostrar los botones y la mano
+ * @param actualPlayerTurn Boolean que mira si es el turno del jugador actual (true) o no (false)
+ * @param playerTurn Int que muestra de que jugador es turno actual (1 o 2)
+ * @param playerFinished Boolean que controla si el jugador ha terminado o no
+ */
 @Composable
 fun PlayerButtons(
     pvpViewModel: PVPViewModel,
@@ -197,6 +228,10 @@ fun PlayerButtons(
         )
     }
     Spacer(dp = 5)
+    /**
+     * Muestra las cartas del jugador actual,
+     * se controla que mano se muestra con el Id del jugador
+     */
     PlayerCards(
         if (playerID == 1) handplayer1
         else handplayer2,
@@ -205,6 +240,13 @@ fun PlayerButtons(
 
 }
 
+
+/**
+ * Contiene la LazyRow en la que se muestran las manos de los jugadores
+ *
+ * @param handplayer es la mano que va a mostrarse
+ * @param refresh solo se pide, para refrescar la LazyRow
+ */
 @Composable
 fun PlayerCards(
     handplayer: List<Carta>,
@@ -223,6 +265,10 @@ fun PlayerCards(
     Spacer(dp = 5)
 }
 
+
+/**
+ * Muestra las imagenes de las cartas
+ */
 @Composable
 fun CardPrinter(card: Carta) {
     Image(
@@ -233,6 +279,12 @@ fun CardPrinter(card: Carta) {
     )
 }
 
+/**
+ * Funcion que muestra la pantalla de final de la partida,
+ * da la opcion de reiniciar la partida, muestra el resultado y la mano ganadora
+ *
+ * @param pvpViewModel Clase controladora
+ */
 @Composable
 fun PVPEndVisual(
     pvpViewModel: PVPViewModel,
@@ -287,6 +339,7 @@ fun PVPEndVisual(
 
         Spacer(dp = 5)
 
+        // Si el winnerText contiene un ganador y no un empate o una doble derrota muestra la mano ganadora
         if (winnerText == "Gana el Jugador 1" || winnerText == "Gana el Jugador 2" ){
             Text(
                 text = "Mano Ganadora: ",
@@ -294,6 +347,7 @@ fun PVPEndVisual(
                 fontWeight = FontWeight.Bold,
                 color = Color.Black
             )
+            // Muestra la mano ganadora dependiendo del winnerText
          PlayerCards(if (winnerText == "Gana el Jugador 1") winnerHand1 else winnerHand2,
              refreshWinnerCards
          )
