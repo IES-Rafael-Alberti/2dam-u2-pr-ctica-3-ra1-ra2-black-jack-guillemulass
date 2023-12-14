@@ -18,6 +18,14 @@ import androidx.navigation.NavHostController
 import com.gmulbat1301.blackjack.R
 import com.gmulbat1301.blackjack.routes.Routes
 
+
+/**
+ * Funcion Padre de la pantalla, controla que se muestra,
+ * si la pantalla de juego o la de final de la partida
+ *
+ * @param navController Controlador de navegacion
+ * @param pveViewModel Clase controladora
+ */
 @Composable
 fun screenPVE(
     navController: NavHostController,

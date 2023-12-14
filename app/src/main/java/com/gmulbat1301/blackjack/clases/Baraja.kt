@@ -25,9 +25,7 @@ class Baraja {
         }
 
         fun cogerCarta():Carta{
-            //return if (listaCartas.isNotEmpty()){
                 return listaCartas.removeAt(listaCartas.size - 1)
-            //}else Carta(Naipes.ROI,Palos.PICAS,0)
         }
 
         private val drawableIdList = mutableListOf(
