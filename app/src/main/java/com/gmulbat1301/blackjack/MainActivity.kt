@@ -3,6 +3,7 @@ package com.gmulbat1301.blackjack
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -16,6 +17,11 @@ import com.gmulbat1301.blackjack.screens.*
 
 
 class MainActivity : ComponentActivity() {
+
+    private val pvpViewModel: PVPViewModel by viewModels()
+    private val pveViewModel: PVEViewModel by viewModels()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -26,14 +32,34 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val navController = rememberNavController()
+
                     NavHost(
                         navController = navController,
                         startDestination = Routes.mainScreen.route
                     ) {
-                        composable(Routes.mainScreen.route) { MainScreen(navController) }
-                        composable(Routes.screenPVE.route) { screenPVE(navController) }
-                        composable(Routes.screenPVP.route) { ScreenPVP(navController) }
-                        composable(Routes.screenRules.route) { screenRules(navController) }
+
+                        composable(Routes.mainScreen.route) {
+                            MainScreen(
+                                navController
+                            )
+                        }
+                        composable(Routes.screenPVE.route) {
+                            screenPVE(
+                                navController,
+                                pveViewModel
+                            )
+                        }
+                        composable(Routes.screenPVP.route) {
+                            ScreenPVP(
+                                navController,
+                                pvpViewModel
+                            )
+                        }
+                        composable(Routes.screenRules.route) {
+                            screenRules(
+                                navController
+                            )
+                        }
 
                     }
                 }

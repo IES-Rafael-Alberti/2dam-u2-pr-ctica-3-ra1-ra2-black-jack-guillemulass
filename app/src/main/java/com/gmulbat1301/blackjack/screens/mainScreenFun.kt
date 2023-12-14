@@ -33,7 +33,7 @@ fun MainScreen(navController: NavHostController){
         modifier = Modifier
             .fillMaxSize()
             .paint(
-                painterResource(id = R.drawable.fondocasino), contentScale = ContentScale.FillHeight
+                painterResource(id = R.drawable.fondocasino), contentScale = ContentScale.FillWidth
             ),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

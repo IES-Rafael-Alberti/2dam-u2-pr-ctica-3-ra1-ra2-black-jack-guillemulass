@@ -19,12 +19,15 @@ import com.gmulbat1301.blackjack.R
 import com.gmulbat1301.blackjack.routes.Routes
 
 @Composable
-fun screenPVE(navController: NavHostController){
+fun screenPVE(
+    navController: NavHostController,
+    pveViewModel: PVEViewModel
+){
     Column (
         modifier = Modifier
             .fillMaxSize()
             .paint(
-                painterResource(id = R.drawable.fondocasino), contentScale = ContentScale.FillHeight
+                painterResource(id = R.drawable.fondocasino), contentScale = ContentScale.FillWidth
             ),
         horizontalAlignment = Alignment.CenterHorizontally
     ){

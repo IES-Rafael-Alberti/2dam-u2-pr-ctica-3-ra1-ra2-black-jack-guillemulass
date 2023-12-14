@@ -17,9 +17,10 @@ class Baraja {
                     listaCartas.add(cartaAdd)
                 }
             }
+            barajar()
         }
 
-        fun barajar(){
+        private fun barajar(){
             listaCartas.shuffle()
         }
 
