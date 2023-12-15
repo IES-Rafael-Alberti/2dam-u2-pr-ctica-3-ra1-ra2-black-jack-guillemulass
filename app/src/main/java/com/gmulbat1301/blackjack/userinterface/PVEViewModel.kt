@@ -17,7 +17,7 @@ import com.gmulbat1301.blackjack.clases.Jugador
 
 /**
  * @author: Guillermo Mulas
- * Clase que controla el modo multijugador (1v1)
+ * Clase que controla el modo individual (1vIA)
  * @property baraja -> Objeto Baraja unico del que se sacan las cartas
  * @property _handplayer1 -> Lista de Carta  privada que representa la mano del jugador 1 de forma privada
  * @property handplayer1 -> _handplayer1 para ser accedido desde pvpScreenFun
@@ -103,9 +103,7 @@ class PVEViewModel(application: Application) : AndroidViewModel(application){
     fun IAController() {
         if (_playerTurn.value == 2){
             if (handValue(2)<=17){
-                if (baraja.cogerCarta().puntosMin+handValue(2)>21){
-                    giveCard(2)
-                }
+                giveCard(2)
             } else{
                 skipTurn(2)
             }
@@ -236,7 +234,7 @@ class PVEViewModel(application: Application) : AndroidViewModel(application){
      * Devuelve una cadena que se muestra en la pantalla en la que se indica los puntos de cada jugador
      */
     fun playersPoints():String{
-        return "Jugador 1 : ${handValue(1)} puntos\n\n Jugador 2 : ${handValue(2)} puntos\n"
+        return "Jugador : ${handValue(1)} puntos\n\n Crupier : ${handValue(2)} puntos\n"
     }
 
     /**

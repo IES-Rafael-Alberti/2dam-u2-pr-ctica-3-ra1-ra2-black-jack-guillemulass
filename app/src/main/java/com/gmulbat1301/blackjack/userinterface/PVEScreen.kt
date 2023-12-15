@@ -153,6 +153,8 @@ fun PVEPlayerButtons(
         modifier = Modifier
             .fillMaxWidth()
     ) {
+        pveViewModel.IAController()
+
         Button(
             shape = RectangleShape,
             colors = ButtonDefaults.buttonColors(Color.LightGray),
@@ -177,8 +179,6 @@ fun PVEPlayerButtons(
             enabled = actualPlayerTurn && playerTurn == playerID,
             onClick = {
                 pveViewModel.skipTurn(playerID)
-                pveViewModel.IAController()
-
             }
         ) {
             Text(
@@ -287,7 +287,7 @@ fun PVEEndVisual(
             ),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        TopRowPvP(navController)
+        TopRowPvE(navController)
 
         Button(
             shape = RectangleShape,

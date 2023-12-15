@@ -28,6 +28,10 @@ class Baraja {
                 return listaCartas.removeAt(listaCartas.size - 1)
         }
 
+        fun tamanoBaraja(): Int {
+            return listaCartas.size
+        }
+
         private val drawableIdList = mutableListOf(
             R.drawable.c1,
             R.drawable.c2,
