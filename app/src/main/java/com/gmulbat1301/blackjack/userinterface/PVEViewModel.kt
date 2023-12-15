@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.gmulbat1301.blackjack.clases.Baraja
 import com.gmulbat1301.blackjack.clases.Carta
-import com.gmulbat1301.blackjack.clases.Jugador
 
 /**
  * |-------------------------------------------------------------------------------------------------|
@@ -28,13 +27,11 @@ import com.gmulbat1301.blackjack.clases.Jugador
  * @property _player1Turn -> Boolean que representa si es el turno actual es del jugador 1
  * @property player1Turn -> _player1Turn para ser accedido desde pvpScreenFun
  * @property _player2Turn -> Boolean que representa si es el turno actual es del jugador 2
- * @property player2Turn -> _player2Turn para ser accedido desde pvpScreenFun
  * @property _player1Skipped -> Boolena que representa si el jugador 1 ha saltado su turno
  * @property _player2Skipped -> Boolena que representa si el jugador 2 ha saltado su turno
  * @property _player1Finished -> Boolean que representa si es el jugador 1 ha terminado de jugar
  * @property player1Finished -> _player1Finished para ser accedido desde pvpScreenFun
  * @property _player2Finished -> Boolean que representa si es el jugador 2 ha terminado de jugar
- * @property player2Finished -> _player2Finished para ser accedido desde pvpScreenFun
  * @property _refreshPlayerCards -> Boolean que se usa para refrescar la LazyRow y que se muestren las nuevas cartas añadidas
  * @property refreshPlayerCards -> _refreshPlayerCards para ser accedido desde pvpScreenFun
  * @property _finishGame -> Boolean que representa si se ha terminado la partida
@@ -43,12 +40,6 @@ import com.gmulbat1301.blackjack.clases.Jugador
 class PVEViewModel(application: Application) : AndroidViewModel(application){
 
     private val baraja = Baraja
-
-    private val _player1 = MutableLiveData<Jugador>()
-    val player1 : LiveData<Jugador> = _player1
-
-    private val _player2 = MutableLiveData<Jugador>()
-    val player2 : LiveData<Jugador> = _player2
 
     private val _handplayer1 = MutableLiveData<MutableList<Carta>>()
     val handplayer1 : LiveData<MutableList<Carta>> = _handplayer1
@@ -63,7 +54,6 @@ class PVEViewModel(application: Application) : AndroidViewModel(application){
     val player1Turn: LiveData<Boolean> = _player1Turn
 
     private val _player2Turn = MutableLiveData<Boolean>()
-    val player2Turn: LiveData<Boolean> = _player2Turn
 
     private val _player1Skipped = MutableLiveData<Boolean>()
     private val _player2Skipped = MutableLiveData<Boolean>()
@@ -72,7 +62,6 @@ class PVEViewModel(application: Application) : AndroidViewModel(application){
     val player1Finished: LiveData<Boolean> = _player1Finished
 
     private val _player2Finished = MutableLiveData<Boolean>()
-    val player2Finished: LiveData<Boolean> = _player2Finished
 
     private val _refreshPlayerCards = MutableLiveData<Boolean>()
     val refreshPlayerCards : LiveData<Boolean> = _refreshPlayerCards
@@ -100,7 +89,7 @@ class PVEViewModel(application: Application) : AndroidViewModel(application){
         initialHandFiller()
     }
 
-    fun IAController() {
+    fun controlerIA() {
         if (_playerTurn.value == 2){
             if (handValue(2)<=17){
                 giveCard(2)

@@ -153,7 +153,7 @@ fun PVEPlayerButtons(
         modifier = Modifier
             .fillMaxWidth()
     ) {
-        pveViewModel.IAController()
+        pveViewModel.controlerIA()
 
         Button(
             shape = RectangleShape,

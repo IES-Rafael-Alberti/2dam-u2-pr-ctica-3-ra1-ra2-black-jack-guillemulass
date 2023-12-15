@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.gmulbat1301.blackjack.clases.Baraja
 import com.gmulbat1301.blackjack.clases.Carta
-import com.gmulbat1301.blackjack.clases.Jugador
 
 /**
  * |-------------------------------------------------------------------------------------------------|
@@ -42,12 +41,6 @@ import com.gmulbat1301.blackjack.clases.Jugador
 class PVPViewModel(application: Application) : AndroidViewModel(application){
 
     private val baraja = Baraja
-
-    private val _player1 = MutableLiveData<Jugador>()
-    val player1 : LiveData<Jugador> = _player1
-
-    private val _player2 = MutableLiveData<Jugador>()
-    val player2 : LiveData<Jugador> = _player2
 
     private val _handplayer1 = MutableLiveData<MutableList<Carta>>()
     val handplayer1 : LiveData<MutableList<Carta>> = _handplayer1
