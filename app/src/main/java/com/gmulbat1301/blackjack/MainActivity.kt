@@ -18,6 +18,7 @@ import com.gmulbat1301.blackjack.userinterface.*
 
 class MainActivity : ComponentActivity() {
 
+    private val highestCardViewModel: HighestCardViewModel by viewModels()
     private val pvpViewModel: PVPViewModel by viewModels()
     private val pveViewModel: PVEViewModel by viewModels()
 
@@ -43,16 +44,22 @@ class MainActivity : ComponentActivity() {
                                 navController
                             )
                         }
-                        composable(Routes.ScreenPVE.route) {
-                            ScreenPVE(
+                        composable(Routes.ScreenHC.route) {
+                            HighestCardScreen(
                                 navController,
-                                pveViewModel
+                                highestCardViewModel
                             )
                         }
                         composable(Routes.ScreenPVP.route) {
                             ScreenPVP(
                                 navController,
                                 pvpViewModel
+                            )
+                        }
+                        composable(Routes.ScreenPVE.route) {
+                            ScreenPVE(
+                                navController,
+                                pveViewModel
                             )
                         }
                         composable(Routes.ScreenRules.route) {

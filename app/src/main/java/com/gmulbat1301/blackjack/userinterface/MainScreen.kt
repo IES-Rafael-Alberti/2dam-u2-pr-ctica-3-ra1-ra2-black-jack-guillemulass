@@ -57,7 +57,11 @@ fun MainScreen(navController: NavHostController){
             Modifier.size(250.dp)
         )
 
-        Spacer(40)
+        Spacer(10)
+
+        NavButtons(text = "Carta Alta", navController)
+
+        Spacer(20)
 
         NavButtons("Individual",navController)
 
@@ -94,7 +98,7 @@ fun NavButtons(
     text: String,
     navController: NavHostController
 ){
-    var fontSize = 40
+    val fontSize = 30
     Button(
         shape = RectangleShape,
         onClick = {
@@ -102,11 +106,10 @@ fun NavButtons(
              * Dependiendo del texto del boton se crea un boton u otro
              */
             when (text) {
+                "Carta Alta" ->navController.navigate(Routes.ScreenHC.route)
                 "Individual" -> navController.navigate(Routes.ScreenPVE.route)
                 "Multijugador" -> navController.navigate(Routes.ScreenPVP.route)
-                "Reglas" -> {
-                    navController.navigate(Routes.ScreenRules.route)
-                    fontSize = 25 }
+                "Reglas" -> navController.navigate(Routes.ScreenRules.route)
             }
         },
         colors = ButtonDefaults.buttonColors(Color.White)
