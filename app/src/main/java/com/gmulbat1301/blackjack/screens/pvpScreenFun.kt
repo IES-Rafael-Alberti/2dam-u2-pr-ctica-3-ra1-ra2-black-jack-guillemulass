@@ -97,9 +97,9 @@ fun PVPVisual(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        TopRow(navController)
+        TopRowPvP(navController)
 
-        PlayerButtons(
+        PVPPlayerButtons(
             pvpViewModel,
             1,
             player1Turn,
@@ -107,7 +107,7 @@ fun PVPVisual(
             player1Finished
         )
 
-        PlayerButtons(
+        PVPPlayerButtons(
             pvpViewModel,
             2,
             player2Turn,
@@ -122,7 +122,7 @@ fun PVPVisual(
  * Parte superior de la pantalla, se muestra el modo de juego y un boton para volver a la pantalla inicial
  */
 @Composable
-fun TopRow(navController: NavHostController) {
+fun TopRowPvP(navController: NavHostController) {
     Text(
         text = "Multijugador",
         fontSize = 60.sp,
@@ -157,7 +157,7 @@ fun TopRow(navController: NavHostController) {
  * @param playerFinished Boolean que controla si el jugador ha terminado o no
  */
 @Composable
-fun PlayerButtons(
+fun PVPPlayerButtons(
     pvpViewModel: PVPViewModel,
     playerID: Int,
     actualPlayerTurn: Boolean,
@@ -304,7 +304,7 @@ fun PVPEndVisual(
             ),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        TopRow(navController)
+        TopRowPvP(navController)
 
         Button(
             shape = RectangleShape,

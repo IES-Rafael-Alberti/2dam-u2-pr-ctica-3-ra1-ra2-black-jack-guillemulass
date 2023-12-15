@@ -60,7 +60,7 @@ fun MainScreen(navController: NavHostController){
             Modifier.size(250.dp)
         )
 
-        Spacer(45)
+        Spacer(40)
 
         NavButtons("Individual",navController)
 
