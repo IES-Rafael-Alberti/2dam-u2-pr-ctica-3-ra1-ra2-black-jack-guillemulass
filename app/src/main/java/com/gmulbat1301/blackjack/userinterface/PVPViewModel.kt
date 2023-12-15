@@ -101,11 +101,15 @@ class PVPViewModel(application: Application) : AndroidViewModel(application){
         var value = 0
         if (playerID == 1){
             for (card in _handplayer1.value!!){
-                value += card.puntosMin
+                value += if (value + card.puntosMax<=21){
+                    card.puntosMax
+                } else card.puntosMin
             }
         } else{
             for (card in _handplayer2.value!!){
-                value += card.puntosMin
+                value += if (value + card.puntosMax<=21){
+                    card.puntosMax
+                } else card.puntosMin
             }
         }
         return value
