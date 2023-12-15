@@ -13,7 +13,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.gmulbat1301.blackjack.routes.Routes
-import com.gmulbat1301.blackjack.screens.*
+import com.gmulbat1301.blackjack.userinterface.*
 
 
 class MainActivity : ComponentActivity() {
@@ -35,27 +35,27 @@ class MainActivity : ComponentActivity() {
 
                     NavHost(
                         navController = navController,
-                        startDestination = Routes.mainScreen.route
+                        startDestination = Routes.MainScreen.route
                     ) {
 
-                        composable(Routes.mainScreen.route) {
+                        composable(Routes.MainScreen.route) {
                             MainScreen(
                                 navController
                             )
                         }
-                        composable(Routes.screenPVE.route) {
-                            screenPVE(
+                        composable(Routes.ScreenPVE.route) {
+                            ScreenPVE(
                                 navController,
                                 pveViewModel
                             )
                         }
-                        composable(Routes.screenPVP.route) {
+                        composable(Routes.ScreenPVP.route) {
                             ScreenPVP(
                                 navController,
                                 pvpViewModel
                             )
                         }
-                        composable(Routes.screenRules.route) {
+                        composable(Routes.ScreenRules.route) {
                             screenRules(
                                 navController
                             )

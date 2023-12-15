@@ -1,4 +1,4 @@
-package com.gmulbat1301.blackjack.screens
+package com.gmulbat1301.blackjack.userinterface
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -7,6 +7,12 @@ import androidx.lifecycle.MutableLiveData
 import com.gmulbat1301.blackjack.clases.Baraja
 import com.gmulbat1301.blackjack.clases.Carta
 import com.gmulbat1301.blackjack.clases.Jugador
+
+/**
+ * |-------------------------------------------------------------------------------------------------|
+ * |El ViewModel es identico al de el modo PVE solo que aqui no creo la funcion controladora de la IA|
+ * |-------------------------------------------------------------------------------------------------|
+ */
 
 /**
  * @author: Guillermo Mulas

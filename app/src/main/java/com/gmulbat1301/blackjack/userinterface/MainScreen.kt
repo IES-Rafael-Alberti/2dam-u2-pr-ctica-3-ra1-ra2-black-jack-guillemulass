@@ -1,13 +1,11 @@
-package com.gmulbat1301.blackjack.screens
+package com.gmulbat1301.blackjack.userinterface
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
@@ -20,7 +18,6 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
@@ -105,10 +102,10 @@ fun NavButtons(
              * Dependiendo del texto del boton se crea un boton u otro
              */
             when (text) {
-                "Individual" -> navController.navigate(Routes.screenPVE.route)
-                "Multijugador" -> navController.navigate(Routes.screenPVP.route)
+                "Individual" -> navController.navigate(Routes.ScreenPVE.route)
+                "Multijugador" -> navController.navigate(Routes.ScreenPVP.route)
                 "Reglas" -> {
-                    navController.navigate(Routes.screenRules.route)
+                    navController.navigate(Routes.ScreenRules.route)
                     fontSize = 25 }
             }
         },

@@ -1,4 +1,4 @@
-package com.gmulbat1301.blackjack.screens
+package com.gmulbat1301.blackjack.userinterface
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -7,6 +7,13 @@ import androidx.lifecycle.MutableLiveData
 import com.gmulbat1301.blackjack.clases.Baraja
 import com.gmulbat1301.blackjack.clases.Carta
 import com.gmulbat1301.blackjack.clases.Jugador
+
+/**
+ * |-------------------------------------------------------------------------------------------------|
+ * |            El ViewModel es identico al de el modo PVP (el cual realicé primero)                 |
+ * |                   solo que aqui creo la funcion controladora de la IA                           |
+ * |-------------------------------------------------------------------------------------------------|
+ */
 
 /**
  * @author: Guillermo Mulas
@@ -91,6 +98,18 @@ class PVEViewModel(application: Application) : AndroidViewModel(application){
         _player1Finished.value = false
         _player2Finished.value = false
         initialHandFiller()
+    }
+
+    fun IAController() {
+        if (_playerTurn.value == 2){
+            if (handValue(2)<=17){
+                if (baraja.cogerCarta().puntosMin+handValue(2)>21){
+                    giveCard(2)
+                }
+            } else{
+                skipTurn(2)
+            }
+        }
     }
 
     /**
@@ -230,9 +249,9 @@ class PVEViewModel(application: Application) : AndroidViewModel(application){
 
         return when {
             (handValue1 in 1 until 22 && (handValue1 > handValue2 || handValue2 > 21)) ->
-                "Gana el Jugador 1"
+                "Has Ganado!"
             (handValue2 in 1 until 22 && (handValue2 > handValue1 || handValue1 > 21)) ->
-                "Gana el Jugador 2"
+                "Gana la Casa"
             (handValue1 == handValue2 && handValue1 in 1 until 22) ->
                 "Empate"
             else ->

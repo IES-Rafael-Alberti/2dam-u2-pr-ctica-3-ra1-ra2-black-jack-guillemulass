@@ -1,4 +1,4 @@
-package com.gmulbat1301.blackjack.screens
+package com.gmulbat1301.blackjack.userinterface
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
@@ -132,7 +132,7 @@ fun TopRowPvP(navController: NavHostController) {
 
     Button(
         shape = RectangleShape,
-        onClick = { navController.navigate(Routes.mainScreen.route) },
+        onClick = { navController.navigate(Routes.MainScreen.route) },
         colors = ButtonDefaults.buttonColors(Color.Red)
     ) {
         Text(
@@ -353,7 +353,6 @@ fun PVPEndVisual(
          )
         }
     }
-
 
 }
 

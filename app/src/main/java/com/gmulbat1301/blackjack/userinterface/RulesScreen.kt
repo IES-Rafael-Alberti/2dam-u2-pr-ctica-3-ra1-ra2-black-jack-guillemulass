@@ -1,11 +1,9 @@
-package com.gmulbat1301.blackjack.screens
+package com.gmulbat1301.blackjack.userinterface
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
@@ -38,53 +36,85 @@ fun screenRules(navController: NavHostController){
 
         Text(
             text = "Reglas",
-            fontSize = 50.sp,
+            fontSize = 60.sp,
             fontWeight = FontWeight.Bold,
+            color = Color.Black
         )
-
-        Spacer(modifier = Modifier.padding(20.dp))
 
         Button(
             shape = RectangleShape,
-            onClick = { navController.navigate(Routes.mainScreen.route) },
+            onClick = { navController.navigate(Routes.MainScreen.route) },
             colors = ButtonDefaults.buttonColors(Color.Red)
         ) {
             Text(
                 text = "Pantalla Inicial",
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.DarkGray
+                color = Color.Black
             )
         }
 
-        Spacer(modifier = Modifier.padding(120.dp))
+        Column (
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(20.dp)
+        ){
+            Text(
+                text = "Valor de las cartas",
+                fontSize = 40.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.Black
+
+            )
+
+            Text(
+                text = "As -> 1/11 (Depende de la conveniencia a la mano del jugador)\n" +
+                        "Valet -> 10\n" +
+                        "Dama -> 10\n" +
+                        "Rey -> 10",
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.Black
+            )
+        }
 
         Column (
             modifier = Modifier
-                .fillMaxHeight()
-                .width(250.dp)
+                .fillMaxWidth()
+                .padding(20.dp)
         ){
             Text(
                 text = "Individual",
+                fontSize = 40.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.Black
+            )
+
+            Text(
+                text = "El jugador puede pedir cartas hasta superar la puntuacion de 21\nEl crupier tiene que plantarse siempre que su  puntuacion supere 17, pero puede plantarse antes.",
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
-            )
-            Text(
-                text = "ASUDFAISODV SADUOP FU PSADFOU SDAFOU DSFOU SDFOHI SDFLHSDAFUHL DSFI SDFH "
+                color = Color.Black
             )
         }
 
         Column (
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
+                .padding(20.dp)
         ){
             Text(
                 text = "Multijugador",
+                fontSize = 40.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.Black
+            )
+
+            Text(
+                text = "Los jugadores pueden pedir cartas (simpre que su puntuacion no sea mayor de 21) y pasar el turno como quieran, si ambos pasan el turno se acaba la partida, si la puntuacion de ambos supera 21 se acaba la partida.",
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
-            )
-            Text(
-                text = "WILLYREX SON LOS PADRES WILLYREX SON LOS PADRES WILLYREX SON LOS PADRES WILLYREX SON LOS PADRES"
+                color = Color.Black
             )
         }
 
